@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sass</title>
+</head>
+
+<body>
+  <div>
+    <p>ola mundo</p>
+    <nav></nav>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.sync.min.js"></script>
+  <script>
+    fetch('styles.scss')
+    .then(response => response.text())
+    .then(scss => {
+      
+      Sass.compile(scss, function(result){
+        const style = document.createElement("style");
+        style.innerHTML= result.text
+        document.head.appendChild(style)
+      })
+    })
+    .catch(erro => console.error("Erro"))
+  </script>
+  
+</body>
+
+</html>
